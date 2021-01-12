@@ -1,36 +1,63 @@
 <div class="container">
     <h2>User Settings form</h2>
-    <div class="form-group">
+
+    <form #form="ngForm" ngNativeValidate>
+      <div class="form-group">
         <label for="name">Name</label>
-        <input id="name" name="name" class="form-control" placeholder="name@example.com">
+        <input id="name" name="name" class="form-control" placeholder="name@example.com" [(ngModel)]="userSettings.name" required #someTEst="ngModel"/>
     </div>
 
     <div class="form-check form-group">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" name="emailOffers" id="flexCheckDefault" [(ngModel)]="userSettings.emailOffers">
         <label class="form-check-label" for="flexCheckDefault">
           Email Special Offers
         </label>
       </div>
 
-      <h5>User interface Style</h5>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="light" id="lightInterface">
-        <label class="form-check-label" for="flexRadioDefault1">
-          Light
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="medium" id="mediumInterface">
-        <label class="form-check-label" for="mediumInterface">
-          Medium
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="dark" id="darkInterface" checked>
-        <label class="form-check-label" for="darkInterface">
-          Dark
-        </label>
-      </div>
+      <p>User interface Style</p>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="light" id="lightInterface" [(ngModel)]="userSettings.interfaceStyle">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Light
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="medium" id="mediumInterface">
+            <label class="form-check-label" for="mediumInterface">
+              Medium
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="dark" id="darkInterface">
+            <label class="form-check-label" for="darkInterface">
+              Dark
+            </label>
+          </div>
+        </div>
 
+    <div class="form-group">
+      <label for="subscripionType">Subscription Type</label>
+      <select class="form-control" id="subscripionType" name="subscripionType" [(ngModel)]="userSettings.subscription">
+        <option>Monthly</option>
+        <option>Yearly</option>
+        <option>Lifetime</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Notes</label>
+      <textarea name="notes" id="notes" rows="3" class="form-control" [(ngModel)]="userSettings.notes"></textarea>
+    </div>
     <button class="btn btn-primary">Send</button>
+  </form>
 </div>
+
+
+<h2>{{ userSettings | json }}</h2>
+<h1>{{ copyWithoutSpreadOperator | json }}</h1>
+
+  
+
+
+
